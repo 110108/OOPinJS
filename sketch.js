@@ -1,18 +1,22 @@
-let bubble1;
-let bubble2;
+let bubbles = [];
 
 function setup() { // built-in P5.JS function -=- this runs once
 	createCanvas(600, 400);
-	bubble1=new Bubble(200, 200, 40);
-	bubble2=new Bubble(400, 200, 20);
 }
+
+function mousePressed() {
+	let r=random(10, 50);
+	let b=new Bubble(mouseX, mouseY, r);
+	bubbles.push(b);
+}
+
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	background(0); // give the canvas a black background
-	bubble1.move();
-	bubble1.show();
-	bubble2.move();
-	bubble2 .show();
+	for (let i=0; i<bubbles.length; i++){
+		bubbles[i].move();
+		bubbles[i].show();
+	}
 }
 
 class Bubble {
@@ -31,15 +35,6 @@ class Bubble {
 	stroke(255); // white outline
 	strokeWeight(4); // line width
 	noFill();
-	ellipse(this.x, this.y, this.r*2); // draw an ellipse/circle
+	ellipse(this.x, this.y, this.r, this.r); // draw an ellipse/circle
 	}
 }
-
-
-//function show() {
-//3.37
-//}
-
-//function move() {
-
-//}
