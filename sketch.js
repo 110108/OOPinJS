@@ -1,14 +1,16 @@
 let bubbles = [];
 
 function setup() { // built-in P5.JS function -=- this runs once
-	createCanvas(600, 400);
+	createCanvas(640, 480);
+	let x=random(width);
+	let y=random(height);
 }
 
-function mousePressed() {
+/*function mouseDragged() {
 	let r=random(10, 50);
 	let b=new Bubble(mouseX, mouseY, r);
 	bubbles.push(b);
-}
+}*/
 
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
@@ -38,3 +40,4 @@ class Bubble {
 	ellipse(this.x, this.y, this.r, this.r); // draw an ellipse/circle
 	}
 }
+//2.30
