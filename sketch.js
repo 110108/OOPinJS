@@ -1,4 +1,5 @@
-let bubble
+let bubbles[];
+let bubble;
 
 function setup() { // built-in P5.JS function -=- this runs once
 	createCanvas(640, 480);
@@ -6,11 +7,11 @@ function setup() { // built-in P5.JS function -=- this runs once
 	let y=random(height);
 	let r=random(10,50);
 	let b=new Bubble(x, y, r);
-	bubble.push(b);
+	bubbles.push
 }
 
 function mouseClicked(){
-	bu.click();
+	bubble.click();
 }
 
 /*function mouseDragged() {
@@ -22,13 +23,13 @@ function mouseClicked(){
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	background(0); // give the canvas a black background
-	/*for (let i=0; i<bubbles.length; i++){
+	for (let i=0; i<bubbles.length; i++){
 		bubbles[i].move();
 		bubbles[i].show();
-	}*/
+		bubbles[i].click();
+	}
 	bubble.move();
 	bubble.show();
-
 }
 
 class Bubble {
@@ -38,9 +39,11 @@ class Bubble {
 		this.r=r;
 	}
 
-	click(){
-		bubble.clicked
-		console.log("Clicked On Bubble");
+	click() {
+		let d=dist(mouseX, mouseY, this.x, this.y);
+		if(d<this.r){
+			console.log("Clicked On Bubble");
+		}
 	}
 
 	move() {
