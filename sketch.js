@@ -7,7 +7,7 @@ function setup() { // built-in P5.JS function -=- this runs once
 	let y=random(height);
 	let r=random(10,50);
 	let b=new Bubble(x, y, r);
-	bubbles.push
+	b.push();
 }
 
 function mouseClicked(){
