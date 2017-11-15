@@ -1,13 +1,16 @@
 let bubbles=[];
 
 function setup() { // built-in P5.JS function -=- this runs once
-	createCanvas(640, 480);
-	let x=random(width);
-	let y=random(height);
-	let r=random(10,50);
-	let b=new Bubble(x, y, r);
-	bubbles.push(b);
+	createCanvas(windowWidth, windowHeight);
+	for(let i=0; i<10; i++){
+		let x=random(width);
+		let y=random(height);
+		let r=random(10,50);
+		let b=new Bubble(x, y, r);
+		bubbles.push(b);
+	}
 }
+
 
 function mouseClicked(){
 	for (let i=0; i<bubbles.length; i++){
@@ -49,7 +52,17 @@ class Bubble {
 
 	move() {
 	this.x = this.x + random(-5,5);
-	this.y = this.y + random(-5,5);
+	this.y = this.y + random(0,5);
+
+	if(this.y==windowHeight){
+		this.y=0;
+		console.log("y=0")
+	}
+
+	if(this.x==windowWidth){
+		this.x-=1;
+		console.log("x=0")
+	}
 	}
 
 	show() {
