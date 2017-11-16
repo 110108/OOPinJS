@@ -52,7 +52,12 @@ function mousePressed(){
 		gamestate="title";
 	}
 	else if(gamestate=="ingame"){
-		//make the bullets?
+		if(win){
+			gamestate="win";
+		}
+		else if (loss){
+			gamestate="loss";
+		}
 	}
 }
 
@@ -64,7 +69,7 @@ class ship {
 
 	move(){
 		this.x=mouseX;
-		this.y=(windowHeight-45);//subject to change
+		this.y=(windowHeight-45);
 	}
 
 	show(){
@@ -72,6 +77,10 @@ class ship {
 		strokeWeight(1); // line width
 		fill(random(10,255),0,0);
 		triangle((this.x-20), (this.y+10), (this.x), (this.y-10), (this.x+20), (this.y+10));
+	}
+
+	pop(){
+		//if()
 	}
 }
 
@@ -85,13 +94,16 @@ class Bubble {
 	move() {
 		this.x = this.x + random(-5,5);
 		this.y = this.y + random(0,5);
+		if(this.y==200){
+			console.log("bubble.yes")
+		}
 	}
 
 	warp() {
-		//if(this.y==(700)){
+		if(this.y==((windowHeight-20)-this.r)){
 			//this.y=10;
-			console.log("y=0")
-		//}
+			console.log(windowHeight-20)
+		}
 	}
 
 	show() {
