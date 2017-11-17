@@ -1,7 +1,6 @@
 let bubbles=[];
 let player;
 let gamestate;
-let canvasHeight;
 
 function setup() { // built-in P5.JS function -=- this runs once
 	createCanvas((windowWidth-20), (windowHeight-20));
@@ -14,19 +13,16 @@ function setup() { // built-in P5.JS function -=- this runs once
 	}
 	player=new ship(0,0);
 	gamestate="title";
-	console.log(windowHeight-20);
 }
-
-
-
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	background(0); // give the canvas a black background
-	//if(gamestate=="ingame"){
+	//else if(gamestate=="ingame"){
 		for (let i=0; i<bubbles.length; i++){
 			bubbles[i].move();
 			bubbles[i].show();
-			bubbles[i].warp();
+			bubbles[i].checkY(windowHeight-20);
+			bubbles[i].checkX(windowWidth-20);
 		}
 		player.move();
 	 	player.show();
@@ -78,10 +74,6 @@ class ship {
 		fill(random(10,255),0,0);
 		triangle((this.x-20), (this.y+10), (this.x), (this.y-10), (this.x+20), (this.y+10));
 	}
-
-	pop(){
-		//if()
-	}
 }
 
 class Bubble {
@@ -92,17 +84,10 @@ class Bubble {
 	}
 
 	move() {
-		this.x = this.x + random(-5,5);
+		this.x = this.x + random(-10,5);
 		this.y = this.y + random(0,5);
 		if(this.y==200){
-			console.log("bubble.yes")
-		}
-	}
-
-	warp() {
-		if(this.y==((windowHeight-20)-this.r)){
-			//this.y=10;
-			console.log(windowHeight-20)
+			console.log("bubble yes")
 		}
 	}
 
@@ -112,5 +97,18 @@ class Bubble {
 		fill(random(0,100),random(1,255),random(1,255));
 		ellipse(this.x, this.y, this.r, this.r);
 	}
+
+		checkY(h) {
+			if(this.y==h){
+				this.y=10;
+				console.log("warp")
+			}
+		}
+
+		checkX(w){
+			if(this.x==0||this.x==w){
+				console.log("pen is mightier")
+			}
+		}
 }
 //2.30
