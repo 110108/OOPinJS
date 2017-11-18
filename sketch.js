@@ -1,6 +1,7 @@
 let bubbles=[];
 let player;
 let gamestate;
+let test;
 
 function setup() { // built-in P5.JS function -=- this runs once
 	createCanvas((windowWidth-20), (windowHeight-20));
@@ -13,10 +14,14 @@ function setup() { // built-in P5.JS function -=- this runs once
 	}
 	player=new ship(0,0);
 	gamestate="title";
+	test=new grid(0);
 }
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	background(0); // give the canvas a black background
+	// if(gamestate=="title"){
+	// 	//print title W/ epilepsy warning
+	// }
 	//else if(gamestate=="ingame"){
 		for (let i=0; i<bubbles.length; i++){
 			bubbles[i].move();
@@ -26,6 +31,7 @@ function draw() { // built-in P5.JS function -=-  automatic loop that repeats fo
 		}
 		player.move();
 	 	player.show();
+		test.show();
 	//}
 
 	// else if(gamestate=="loss"){
@@ -57,6 +63,16 @@ function mousePressed(){
 	}
 }
 
+class grid {
+	constructor(x){
+		this.x=x;
+	}
+
+	show(){
+		ellipse(this.x, 50, 10,10)
+	}
+}
+
 class ship {
 	constructor(x,y){
 		this.x=x;
@@ -84,7 +100,7 @@ class Bubble {
 	}
 
 	move() {
-		this.x = this.x + random(-10,5);
+		this.x = this.x + random(-20,5);
 		this.y = this.y + random(0,5);
 		if(this.y==200){
 			console.log("bubble yes")
@@ -106,8 +122,18 @@ class Bubble {
 		}
 
 		checkX(w){
-			if(this.x==0||this.x==w){
-				console.log("pen is mightier")
+			if(this.x==0){
+				console.log("x on left")
+			}
+
+			else if(this.x==w){
+				console.log("x on right")
+			}
+		}
+
+		logic(q){
+			if(q==true){
+				console.log("if/arg works")
 			}
 		}
 }
