@@ -1,7 +1,8 @@
 let bubbles=[];
 let player;
 let gamestate;
-let test;
+let timer;
+let score;
 
 function setup() { // built-in P5.JS function -=- this runs once
 	createCanvas((windowWidth-20), (windowHeight-20));
@@ -11,36 +12,48 @@ function setup() { // built-in P5.JS function -=- this runs once
 		let r=random(10,50);
 		let b=new Bubble(x, y, r);
 		bubbles.push(b);
+
 	}
 	player=new ship(0,0);
 	gamestate="title";
-	test=new grid(0);
 }
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	background(0); // give the canvas a black background
-	// if(gamestate=="title"){
-	// 	//print title W/ epilepsy warning
-	// }
-	//else if(gamestate=="ingame"){
+	if(gamestate=="title"){
+		timer=6000;
+		score=0;
+		//print title W/ epilepsy warning
+	}
+	else if(gamestate=="ingame"){
 		for (let i=0; i<bubbles.length; i++){
 			bubbles[i].move();
 			bubbles[i].show();
 			bubbles[i].checkY(windowHeight-20);
 			bubbles[i].checkX(windowWidth-20);
 		}
+
+		text((timer/100)+"seconds",50,40)
+		timer--;
+
 		player.move();
 	 	player.show();
-		test.show();
-	//}
 
-	// else if(gamestate=="loss"){
-	// 	//print loss screen
-	// }
-  //
-	// else if(gamestate=="win"){
-	// 	//print win screen
-	// }
+		if(timer==0&&score>10){
+			gamestate="win";
+		}
+		else if (timer==0&&score<10){
+			gamestate="loss";
+		}
+	}
+
+	else if(gamestate=="loss"){
+		//print loss screen
+	}
+
+	else if(gamestate=="win"){
+		//print win screen
+	}
 }
 
 function mousePressed(){
@@ -54,22 +67,7 @@ function mousePressed(){
 		gamestate="title";
 	}
 	else if(gamestate=="ingame"){
-		if(win){
-			gamestate="win";
-		}
-		else if (loss){
-			gamestate="loss";
-		}
-	}
-}
 
-class grid {
-	constructor(x){
-		this.x=x;
-	}
-
-	show(){
-		ellipse(this.x, 50, 10,10)
 	}
 }
 
@@ -100,11 +98,8 @@ class Bubble {
 	}
 
 	move() {
-		this.x = this.x + random(-20,5);
+		this.x = this.x + random(-5,5);
 		this.y = this.y + random(0,5);
-		if(this.y==200){
-			console.log("bubble yes")
-		}
 	}
 
 	show() {
@@ -115,26 +110,18 @@ class Bubble {
 	}
 
 		checkY(h) {
-			if(this.y==h){
+			if(this.y>h){
 				this.y=10;
-				console.log("warp")
 			}
 		}
 
 		checkX(w){
-			if(this.x==0){
-				console.log("x on left")
+			if(this.x<0){
+				this.x+=5;
 			}
 
-			else if(this.x==w){
-				console.log("x on right")
-			}
-		}
-
-		logic(q){
-			if(q==true){
-				console.log("if/arg works")
+			else if(this.x>w){
+				this.x-=5
 			}
 		}
 }
-//2.30
