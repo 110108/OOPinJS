@@ -119,7 +119,8 @@ class Bubble {
 
 	move() {
 		this.x = this.x + random(-5,5);
-		this.y = this.y + random(0,10);
+		this.y = this.y + random(0,15);
+
 	}
 
 	show() {
