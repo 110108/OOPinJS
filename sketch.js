@@ -19,7 +19,7 @@ function setup() { // built-in P5.JS function -=- this runs once
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
 	if(gamestate=="title"){
 		background(bg);
-		for(let i=0; i<random(5,500); i++){
+		for(let i=0; i<random(5,50); i++){
 			let x=random(10,(width-10));
 			let y=random(height);
 			let r=random(30,50);
