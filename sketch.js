@@ -13,7 +13,7 @@ function setup() { // built-in P5.JS function -=- this runs once
 	score=0;
 	bg=loadImage("https://cdn.glitch.com/f3153797-32fb-4ded-bb9d-20975e419671%2Fgame-dev-startscreen-01.png?1511628691331");
 	ws=loadImage("https://cdn.glitch.com/f3153797-32fb-4ded-bb9d-20975e419671%2Fws.png?1511629985411");
-	ls=loadImage("https://cdn.glitch.com/f3153797-32fb-4ded-bb9d-20975e419671%2Fls.png?1511630368173");
+	ls=loadImage("https://cdn.glitch.com/f3153797-32fb-4ded-bb9d-20975e419671%2Fls.png?1513538635616");
 }
 
 function draw() { // built-in P5.JS function -=-  automatic loop that repeats forever
