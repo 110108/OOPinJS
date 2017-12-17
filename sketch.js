@@ -104,10 +104,6 @@ class ship {
 		fill(random(10,255),0,0);
 		triangle((this.x-20), (this.y+10), (this.x), (this.y-10), (this.x+20), (this.y+10));
 	}
-
-	// intersects(that){
-	// 	if()
-	// }
 }
 
 class Bubble {
